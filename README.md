@@ -13,10 +13,10 @@ git clone https://github.com/AniC16/GuardianNet.git
 cd guardiannet-frontend
 
 Install dependencies
-npm install
+- npm install
 
 Run the development server
-npm run dev
+- npm run dev
 
 
 src/
