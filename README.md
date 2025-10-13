@@ -9,8 +9,8 @@ This repository contains the **frontend** codebase, developed with **React**, **
 
 ### Clone the repository
 
-git clone https://github.com/AniC16/GuardianNet.git
-cd guardiannet-frontend
+- git clone https://github.com/AniC16/GuardianNet.git
+- cd guardiannet-frontend
 
 Install dependencies
 - npm install
