@@ -1,22 +1,21 @@
-
 import React from 'react'
 
-export default function ProgressCircle({ value=82, size=140, stroke=12, label='Safety Score' }){
+export default function ProgressCircle({ value = 82, size = 140, stroke = 12, label = 'Safety Score' }) {
   const radius = (size - stroke) / 2
   const circumference = 2 * Math.PI * radius
   const clamped = Math.max(0, Math.min(100, value))
   const offset = circumference - (clamped / 100) * circumference
 
   return (
-    <div style={{ display:'grid', placeItems:'center' }}>
-      <svg width={size} height={size}>
+    <div style={{ position: 'relative', width: size, height: size, display: 'grid', placeItems: 'center' }}>
+      <svg width={size} height={size} style={{ transform: 'rotate(-90deg)' }}>
         <circle
           stroke="rgba(255,255,255,0.08)"
           fill="transparent"
           strokeWidth={stroke}
           r={radius}
-          cx={size/2}
-          cy={size/2}
+          cx={size / 2}
+          cy={size / 2}
         />
         <circle
           stroke="url(#grad)"
@@ -24,11 +23,11 @@ export default function ProgressCircle({ value=82, size=140, stroke=12, label='S
           strokeLinecap="round"
           strokeWidth={stroke}
           r={radius}
-          cx={size/2}
-          cy={size/2}
+          cx={size / 2}
+          cy={size / 2}
           strokeDasharray={circumference}
           strokeDashoffset={offset}
-          style={{ transition:'stroke-dashoffset .6s ease' }}
+          style={{ transition: 'stroke-dashoffset .6s ease' }}
         />
         <defs>
           <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -37,9 +36,21 @@ export default function ProgressCircle({ value=82, size=140, stroke=12, label='S
           </linearGradient>
         </defs>
       </svg>
-      <div style={{ marginTop:-size/2.2, textAlign:'center' }}>
-        <div style={{ fontSize:26, fontWeight:800 }}>{clamped}/100</div>
-        <div className="tooltip">{label}</div>
+
+      {/* Centered Label */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          textAlign: 'center',
+        }}
+      >
+        <div style={{ fontSize: 26, fontWeight: 800 }}>{clamped}/100</div>
+        <div className="tooltip" style={{ fontSize: 13, marginTop: 2 }}>
+          {label}
+        </div>
       </div>
     </div>
   )

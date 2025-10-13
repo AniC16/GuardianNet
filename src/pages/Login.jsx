@@ -1,9 +1,8 @@
-
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext.jsx'
 
-export default function Login(){
+export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const nav = useNavigate()
@@ -17,30 +16,49 @@ export default function Login(){
   }
 
   return (
-    <div className="container" style={{ maxWidth: 760 }}>
-      <div className="card">
-        <div className="header">
-          <div className="brand">
-            <div className="brand-logo">🛡️</div>
-            <div>GuardianNet</div>
+    <div className="hero">
+      <div className="hero-overlay" />
+      <div className="hero-content">
+        <div className="text-side">
+          <div className="brand-row">
+            <div className="brand-logo big-glow">🛡️</div>
+            <h1 className="brand-name">GuardianNet</h1>
           </div>
-          <Link to="/counselor" className="btn ghost">I’m a counselor</Link>
+
+          <h2 className="tagline">A safer digital space for every student</h2>
+          <p className="desc">
+            GuardianNet helps students get support and encourages healthy digital habits.
+            Your privacy matters — all conversations are confidential and follow
+            <span className="highlight"> COPPA </span> &
+            <span className="highlight"> FERPA </span> guidelines.
+          </p>
+
+          <Link to="/counselor" className="btn ghost alt">I’m a counselor</Link>
         </div>
 
-        <h1 style={{ margin:'6px 0 0', fontSize:28 }}>A safer digital space for every student</h1>
-        <p style={{ color:'var(--muted)', marginTop:8 }}>
-          GuardianNet helps students get support and encourages healthy digital habits. 
-          Your privacy matters—conversations are confidential and follow COPPA & FERPA guidelines.
-        </p>
-
-        <form onSubmit={onSubmit} style={{ marginTop:20, display:'grid', gap:12 }}>
-          <input className="input" placeholder="Student email (e.g. alex@school.edu)" value={email} onChange={e=>setEmail(e.target.value)} required />
-          <input className="input" placeholder="Password" type="password" value={password} onChange={e=>setPassword(e.target.value)} required />
-          <button className="btn" type="submit">Login</button>
-        </form>
-
-        <div className="tooltip" style={{ marginTop:10 }}>
-          GuardianNet never shares your conversations without consent and follows COPPA & FERPA guidelines.
+        <div className="form-side">
+          <form onSubmit={onSubmit} className="login-form glass">
+            <h3>Student Login</h3>
+            <input
+              className="input"
+              placeholder="Student email (e.g. alex@school.edu)"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <input
+              className="input"
+              placeholder="Password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button className="btn full primary" type="submit">Login</button>
+            <div className="tooltip">
+              GuardianNet never shares your conversations without consent.
+            </div>
+          </form>
         </div>
       </div>
     </div>
